@@ -6,7 +6,7 @@ class BaseApi {
   constructor(baseURL?: string) {
     console.log(process.env.BACKEND_URL)
     this.axiosInstance = axios.create({
-      baseURL: baseURL || process.env.BACKEND_URL || 'http://localhost:8000',
+      baseURL: baseURL || process.env.BACKEND_URL || 'https://server-manage-score.vercel.app',
       headers: {
         "Content-Type": "application/json"
       },
