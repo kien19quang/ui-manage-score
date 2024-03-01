@@ -3,8 +3,9 @@ import AdminLayout from "@/layouts/AdminLayout/AdminLayout"
 import { ClassDto, IClass } from "@/models/class"
 import { ITeacher } from "@/models/teacher"
 import ClassService from "@/services/ClassService"
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons"
-import { Button, Flex, Form, Modal, Table, TableColumnsType, Typography, message } from "antd"
+import { DeleteOutlined, EditOutlined, EyeOutlined, PlusOutlined } from "@ant-design/icons"
+import { Button, Flex, Form, Modal, Table, TableColumnsType, Tooltip, Typography, message } from "antd"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 
@@ -19,6 +20,7 @@ const Class = () => {
   const [idEditClass, setIdEditClass] = useState<string>('')
 
   const [form] = Form.useForm()
+  const router = useRouter()
 
   useEffect(() => {
     fetchListClass()
@@ -58,6 +60,10 @@ const Class = () => {
     });
   };
 
+  const handleDetailClass = async (record: IClass) => {
+    router.push({ pathname: `/admin/class/${record._id}` })
+  }
+
   const columns: TableColumnsType<any> = [
     {
       title: 'Tên lớp học',
@@ -91,12 +97,15 @@ const Class = () => {
       render: (_, record) => {
         return (
           <Flex gap={16}>
+            <Tooltip title='Chi tiết lớp học'>
+              <Button icon={<EyeOutlined />} onClick={() => handleDetailClass(record)} />
+            </Tooltip>
             <Button icon={<EditOutlined />} onClick={() => handleEditClass(record)} />
             <Button danger icon={<DeleteOutlined />} onClick={() => handleDeleteclass(record)} />
           </Flex>
         );
       },
-      width: 120,
+      width: 160,
       fixed: 'right'
     },
   ];

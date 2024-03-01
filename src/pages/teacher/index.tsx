@@ -2,7 +2,7 @@ import TeacherLayout from "@/layouts/TeacherLayout/TeacherLayout"
 import { IClassTeacher } from "@/models/class"
 import ClassService from "@/services/ClassService"
 import { EyeOutlined } from "@ant-design/icons"
-import { Button, Flex, Table, TableColumnsType, Typography } from "antd"
+import { Button, Flex, Table, TableColumnsType, Tooltip, Typography } from "antd"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
@@ -56,7 +56,9 @@ const TeacherHome = () => {
       render: (_, record) => {
         return (
           <Flex gap={16}>
-            <Button icon={<EyeOutlined />} onClick={() => handleDetailClass(record)} />
+            <Tooltip title='Chi tiết lớp học'>
+              <Button icon={<EyeOutlined />} onClick={() => handleDetailClass(record)} />
+            </Tooltip>
           </Flex>
         );
       },
