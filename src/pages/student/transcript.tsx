@@ -57,7 +57,7 @@ const Transcript = () => {
       title: 'Điểm tổng kết',
       render: (_, record: ITranscript) => {
         if (record.processScore && record.score) {
-          return (record.processScore* 0.3) + (record.score * 0.7)
+          return ((record.processScore* 0.3) + (record.score * 0.7)).toFixed(2)
         }
         return '--'
       }
