@@ -132,7 +132,7 @@ const DetailClass = () => {
   return (
     <>
       <Flex vertical style={{ width: '100%', height: '100%', padding: 24 }} justify="center" align="center" gap={16}>
-        <Flex gap={12} style={{ width: '100%', cursor: 'pointer' }} justify='start' className="hover-color-primary" onClick={() => router.push('/teacher')}>
+        <Flex gap={12} style={{ width: '100%', cursor: 'pointer' }} justify='start' className="hover-color-primary" onClick={() => router.push('/admin/class')}>
           <LeftOutlined />
           Danh sách lớp
         </Flex>
