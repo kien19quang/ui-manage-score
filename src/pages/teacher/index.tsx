@@ -44,6 +44,10 @@ const TeacherHome = () => {
       dataIndex: ['subject', 'title']
     },
     {
+      title: 'Kì học',
+      dataIndex: ['semester', 'title']
+    },
+    {
       title: 'Số sinh viên',
       dataIndex: 'maxQuantityStudent',
       render: (value, record: IClassTeacher) => {
